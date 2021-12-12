@@ -2,8 +2,8 @@ package com.project.lotterywidget;
 
 public class WinningNumber {
 
-    private String createdAtTime;
-    private int winningNumber;
+    private final String createdAtTime;
+    private final int winningNumber;
 
     public WinningNumber(String createdAtTime, int winningNumber) {
         this.createdAtTime = createdAtTime;
@@ -14,15 +14,8 @@ public class WinningNumber {
         return createdAtTime;
     }
 
-    public void setCreatedAtTime(String createdAtTime) {
-        this.createdAtTime = createdAtTime;
-    }
-
     public int getWinningNumber() {
         return winningNumber;
     }
 
-    public void setWinningNumber(int winningNumber) {
-        this.winningNumber = winningNumber;
-    }
 }
