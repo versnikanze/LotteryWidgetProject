@@ -36,28 +36,28 @@
                             <table>
                                 <tbody>
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">Like a butterfly</td>
-                                    <td class="cell100 column2">Boxing</td>
+                                    <td class="cell100 column1">e</td>
+                                    <td class="cell100 column2">5</td>
                                 </tr>
 
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">Mind & Body</td>
-                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column1">d</td>
+                                    <td class="cell100 column2">4</td>
                                 </tr>
 
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">Crit Cardio</td>
-                                    <td class="cell100 column2">Gym</td>
+                                    <td class="cell100 column1">v</td>
+                                    <td class="cell100 column2">3</td>
                                 </tr>
 
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">Wheel Pose Full Posture</td>
-                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column1">b</td>
+                                    <td class="cell100 column2">2</td>
                                 </tr>
 
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">Playful Dancer's Flow</td>
-                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column1">a</td>
+                                    <td class="cell100 column2">1</td>
                                 </tr>
                                 </tbody>
                             </table>

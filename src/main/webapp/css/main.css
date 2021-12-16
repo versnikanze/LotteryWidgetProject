@@ -173,7 +173,7 @@ td.column2 {
 
 
 .table100.ver1 th {
-    font-family: Lato-Bold;
+    font-family: Lato-Bold, serif;
     font-size: 18px;
     color: #fff;
     line-height: 1.4;
@@ -182,7 +182,7 @@ td.column2 {
 }
 
 .table100.ver1 td {
-    font-family: Lato-Regular;
+    font-family: Lato-Regular, serif;
     font-size: 15px;
     color: #808080;
     line-height: 1.4;
@@ -195,10 +195,10 @@ td.column2 {
 .table100.ver1 {
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
-    -o-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    -o-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
     -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
 }
 
@@ -238,14 +238,14 @@ input[type=text]:focus {
 
 /* Button */
 .css-button {
-    font-family: Arial;
+    font-family: Arial, serif;
     color: #FFFFFF;
     font-size: 16px;
     border-radius: 5px;
     border: 1px #3866a3 solid;
     background: linear-gradient(180deg, #63B8EE 5%, #468CCF 100%);
     text-shadow: 1px 1px 1px #528ecc;
-    box-shadow: inset 1px 1px 2px 0px #bbdaf7;
+    box-shadow: inset 1px 1px 2px 0 #bbdaf7;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -258,7 +258,7 @@ input[type=text]:focus {
 .css-button-icon {
     padding: 10px 10px;
     border-right: 1px solid rgba(255, 255, 255, 0.16);
-    box-shadow: rgba(0, 0, 0, 0.14) -1px 0px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.14) -1px 0 0 inset;
 }
 
 .css-button-icon svg {
@@ -312,10 +312,9 @@ input[type=text]:focus {
 .countdown-message {
     text-align: center;
     margin: 0;
-    font-family: Lato-Bold;
+    font-family: Lato-Bold, serif;
     color: #6c7ae0;
-    margin: 0;
-    padding: 0px 0px 6px 0px;
+    padding: 0 0 6px 0;
     font-size: 51px;
     line-height: 44px;
     letter-spacing: -2px;

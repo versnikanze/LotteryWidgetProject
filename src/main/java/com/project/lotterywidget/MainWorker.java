@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static java.util.stream.Collectors.toCollection;
@@ -19,11 +20,13 @@ import static java.util.stream.Collectors.toCollection;
 public class MainWorker extends HttpServlet {
 
     private static final int INITIAL_DELAY = 0;
-    private static final int EXECUTION_PERIOD = 3000;
+    private static final int EXECUTION_PERIOD = 30;
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private ScheduledFuture<?> scheduledFuture;
 
     private RESTService restService;
     private DatabaseService databaseService;
+    private WebsocketServer websocketServer;
 
     /**
      * Called in the initialization of the object. Works as the default constructor.
@@ -33,6 +36,8 @@ public class MainWorker extends HttpServlet {
             this.restService = new RESTService();
             this.databaseService = new DatabaseService();
             getHandleWinner();
+            this.websocketServer = new WebsocketServer(this.scheduledFuture);
+            this.websocketServer.start();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -43,7 +48,7 @@ public class MainWorker extends HttpServlet {
      */
     private void getHandleWinner() {
         final Runnable handler = this::scheduledTasks;
-        scheduler.scheduleAtFixedRate(handler, INITIAL_DELAY, EXECUTION_PERIOD, SECONDS);
+        this.scheduledFuture = scheduler.scheduleAtFixedRate(handler, INITIAL_DELAY, EXECUTION_PERIOD, SECONDS);
     }
 
     /**
@@ -57,7 +62,7 @@ public class MainWorker extends HttpServlet {
             this.databaseService.insertWinningNumber(winningNumber);
             ArrayList<Contestant> currentContestants = this.databaseService.getCurrentContestants();
             this.databaseService.insertWinningContestants(getWinningContestants(currentContestants, winningNumber.getWinningNumber()));
-            //delete current contestants
+            this.databaseService.removeContestants();
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }

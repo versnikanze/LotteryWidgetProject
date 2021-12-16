@@ -2,16 +2,35 @@ const serverRestUrl = "http://localhost:8080/api/rest/";
 const postContestantPick = "registercontestant";
 const getLatestWinners = "getlastfivewinners";
 const updateLatestWinners = "updatewinners";
+let connection = new WebSocket('ws://localhost:4444');
 
 /**
  * Executes a function on window load
  */
 window.onload = function () {
     getWinners(getLatestWinners);
-    let thirtySeconds = 30,
-        display = document.querySelector('#time');
-    startTimer(thirtySeconds, display);
+    openWebsocket();
 }
+
+/**
+ * Opens a websocket and establishes a connection.
+ * Reads reply and sets timer accordingly.
+ */
+function openWebsocket() {
+
+    connection.onopen = function () {
+        connection.send('Ping'); // Send the message 'Ping' to the server
+    };
+
+    connection.onerror = function (error) {
+        console.log('WebSocket Error ' + error);
+    };
+    connection.onmessage = function (e) {
+        let display = document.querySelector('#time');
+        startTimer(e.data, display);
+    };
+}
+
 
 /**
  * Adds an alert to the input field
@@ -41,11 +60,7 @@ function inputValuesAccepted(inputName, inputPickedNumber) {
  */
 function checkNumberValue(inputPickedNumber) {
     let number = parseInt(inputPickedNumber.value);
-    if (number >= 1 && number <= 30) {
-        return false;
-    } else {
-        return true;
-    }
+    return !(number >= 1 && number <= 30);
 }
 
 /**
@@ -135,9 +150,7 @@ function getWinners(restLink) {
             contestantRegistered.classList.remove("failed-register-message");
             jsonToTable(jsonResponse);
             getWinners(updateLatestWinners);
-            let thirtySeconds = 30,
-                display = document.querySelector('#time');
-            startTimer(thirtySeconds, display);
+            connection.send("ping");
         } else if (request.status === 502) {
             //Request timed out retry it
             getWinners(updateLatestWinners);
