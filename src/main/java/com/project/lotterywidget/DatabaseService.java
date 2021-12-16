@@ -129,6 +129,15 @@ public class DatabaseService implements AutoCloseable {
         return jsonLastWinner.build();
     }
 
+    /**
+     * Removes all current contestants from the database
+     *
+     * @throws SQLException if the connection can't be established
+     */
+    public void removeContestants() throws SQLException {
+        String sqlRemoveContestants = "TRUNCATE contestants";
+        this.statement.executeUpdate(sqlRemoveContestants);
+    }
 
     /**
      * Implements close function. Closes the database connection on class destruction.

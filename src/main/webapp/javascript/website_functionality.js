@@ -41,7 +41,7 @@ function inputValuesAccepted(inputName, inputPickedNumber) {
  */
 function checkNumberValue(inputPickedNumber) {
     let number = parseInt(inputPickedNumber.value);
-    if (number >= 0 && number <= 30) {
+    if (number >= 1 && number <= 30) {
         return false;
     } else {
         return true;
@@ -135,6 +135,9 @@ function getWinners(restLink) {
             contestantRegistered.classList.remove("failed-register-message");
             jsonToTable(jsonResponse);
             getWinners(updateLatestWinners);
+            let thirtySeconds = 30,
+                display = document.querySelector('#time');
+            startTimer(thirtySeconds, display);
         } else if (request.status === 502) {
             //Request timed out retry it
             getWinners(updateLatestWinners);

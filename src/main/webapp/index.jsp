@@ -14,7 +14,7 @@
 <body>
 <div class="container">
     <div class="container-countdown">
-        <h1 class="countdown-message">New winner in <span id="time">00:30</span> s</h1>
+        <h1 class="countdown-message">New winner in <span id="time">30</span> s</h1>
     </div>
     <div class="container-data">
         <div class="container-winner-list">
