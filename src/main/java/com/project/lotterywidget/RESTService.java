@@ -21,7 +21,7 @@ import java.util.concurrent.*;
  * This class represents the REST api
  */
 @Path("/rest")
-public class RESTService {
+public class RESTService implements AutoCloseable {
 
     private static final String GET_WINNER_API_LINK = "https://celtra-lottery.herokuapp.com/api/getLotteryNumber";
     private final ExecutorService executorService = java.util.concurrent.Executors.newCachedThreadPool();
@@ -110,4 +110,13 @@ public class RESTService {
         return Response.ok("Contestant registered").build();
     }
 
+    /**
+     * Stops the database listener thread.
+     *
+     * @throws Exception if this resource cannot be closed
+     */
+    @Override
+    public void close() throws Exception {
+        this.dbListenerThread.interrupt();
+    }
 }
